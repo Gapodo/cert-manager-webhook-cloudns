@@ -1,5 +1,5 @@
-IMAGE_NAME := "ixoncloud/cert-manager-webhook-cloudns"
-IMAGE_TAG := "1.0.3"
+IMAGE_NAME := "gapodo/cert-manager-webhook-cloudns"
+IMAGE_TAG := "1.0.4"
 
 OUT := $(shell pwd)/.out
 
@@ -21,3 +21,4 @@ rendered-manifest.yaml:
         --set image.repository=$(IMAGE_NAME) \
         --set image.tag=$(IMAGE_TAG) \
         deploy/cert-manager-webhook-cloudns > "$(OUT)/rendered-manifest.yaml"
+

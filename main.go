@@ -17,7 +17,7 @@
 package main
 
 import (
-	"github.com/ixoncloud/cert-manager-webhook-cloudns/cloudns"
+	"github.com/gapodo/cert-manager-webhook-cloudns/cloudns"
 	"github.com/jetstack/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
 	"github.com/jetstack/cert-manager/pkg/acme/webhook/cmd"
 	restclient "k8s.io/client-go/rest"
