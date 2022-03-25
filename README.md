@@ -18,6 +18,7 @@ The `testdata/config.json` file is there because the DNS01 provider conformance 
 |---|---|---|
 |`GROUP_NAME`|yes|Used to organise cert-manager providers, this is usually a domain|
 |`CLOUDNS_AUTH_ID_FILE`|yes|Path to file which contains ClouDNS Auth ID|
+|`CLOUDNS_AUTH_ID_TYPE`| no, default: auth-id | change to `sub-auth-id` to use a sub-user (created via [Reseller](https://www.cloudns.net/api-settings/)) |
 |`CLOUDNS_AUTH_PASSWORD_FILE`|yes|Path to file which contains ClouDNS Auth password|
 |`CLOUDNS_TTL`|no, default: 60|ClouDNS TTL|
 |`CLOUDNS_HTTP_TIMEOUT`|no, default: 30 seconds|ClouDNS API request timeout|
@@ -31,5 +32,8 @@ The `testdata/config.json` file is there because the DNS01 provider conformance 
 ./scripts/fetch-test-binaries.sh
 
 # Run testing suite
-TEST_ZONE_NAME=<domain> CLOUDNS_AUTH_ID_FILE=.creds/auth_id CLOUDNS_AUTH_PASSWORD_FILE=.creds/auth_password go test -v .
+TEST_ZONE_NAME=<domain> CLOUDNS_AUTH_ID_FILE=.creds/auth_id CLOUDNS_AUTH_PASSWORD_FILE=.creds/auth_password CLOUDNS_AUTH_ID_TYPE=sub-auth-id make verify
+
+# Cleanup after testing (esp. needed when tests have failed)
+remove `~/.cache/kubebuilder-envtest/*`
 ```
